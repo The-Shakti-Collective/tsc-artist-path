@@ -8,6 +8,7 @@
     --brand-teal-deep: #083d3a;
     --brand-green: #126d5e;
     --brand-teal-mid: #08525f;
+    --brand-peacock: #08525f;
     --brand-cream: #ffecd1;
     --brand-cream-muted: #f4eee3;
     --brand-cream-wash: #fcf8f2;
@@ -15,21 +16,26 @@
     --brand-espresso: #592314;
     --brand-burgundy: #6d2034;
     --brand-rust: #88281c;
+    --brand-red-oxide: #88281c;
     --brand-mustard: #ad6517;
     --brand-green-soft: #e6f4f1;
+    --brand-peacock-soft: #e8f3f5;
     --brand-pumpkin-soft: #fef7e0;
+    --brand-red-oxide-soft: #f9ebe9;
 
     --background: 40 33% 98%;
     --foreground: 174 77% 14%;
     --card: 40 33% 99%;
     --card-foreground: 174 77% 14%;
-    --primary: 25 98% 36%;
+    --primary: 8 66% 32%;
     --primary-foreground: 40 33% 98%;
+    --secondary: 188 84% 20%;
+    --secondary-foreground: 40 33% 98%;
     --muted: 38 25% 94%;
     --muted-foreground: 174 30% 35%;
-    --accent: 168 40% 92%;
+    --accent: 188 40% 92%;
     --accent-foreground: 174 77% 14%;
-    --border: 174 20% 85%;
+    --border: 188 20% 85%;
     --radius: 0.75rem;
   }
 
@@ -65,6 +71,18 @@
   .bg-brand-teal-mid {
     background-color: var(--brand-teal-mid);
   }
+  .bg-brand-peacock {
+    background-color: var(--brand-peacock);
+  }
+  .bg-brand-red-oxide {
+    background-color: var(--brand-red-oxide);
+  }
+  .bg-brand-red-oxide-soft {
+    background-color: var(--brand-red-oxide-soft);
+  }
+  .bg-brand-peacock-soft {
+    background-color: var(--brand-peacock-soft);
+  }
   .bg-brand-cream {
     background-color: var(--brand-cream);
   }
@@ -95,22 +113,37 @@
   .text-brand-pumpkin {
     color: var(--brand-pumpkin);
   }
+  .text-brand-peacock {
+    color: var(--brand-peacock);
+  }
+  .text-brand-red-oxide {
+    color: var(--brand-red-oxide);
+  }
   .border-brand-teal-deep\/10 {
     border-color: rgb(8 61 58 / 0.1);
   }
   .border-brand-teal-deep\/15 {
     border-color: rgb(8 61 58 / 0.15);
   }
+  .border-brand-peacock\/10 {
+    border-color: rgb(8 82 95 / 0.1);
+  }
+  .border-brand-peacock\/15 {
+    border-color: rgb(8 82 95 / 0.15);
+  }
+  .border-brand-peacock\/20 {
+    border-color: rgb(8 82 95 / 0.2);
+  }
   .border-brand-cream\/20 {
     border-color: rgb(255 236 209 / 0.2);
   }
 
   .shadow-soft {
-    box-shadow: 0 4px 24px -8px rgb(8 61 58 / 0.12);
+    box-shadow: 0 4px 24px -8px rgb(136 40 28 / 0.15);
   }
 
   .shadow-soft-lg {
-    box-shadow: 0 12px 40px -12px rgb(8 61 58 / 0.18);
+    box-shadow: 0 12px 40px -12px rgb(136 40 28 / 0.22);
   }
 }
 

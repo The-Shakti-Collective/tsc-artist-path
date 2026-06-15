@@ -12,6 +12,10 @@ const config: Config = {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
         },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
+        },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
           foreground: 'hsl(var(--muted-foreground))',
@@ -28,6 +32,7 @@ const config: Config = {
         'brand-teal-deep': '#083d3a',
         'brand-green': '#126d5e',
         'brand-teal-mid': '#08525f',
+        'brand-peacock': '#08525f',
         'brand-cream': '#ffecd1',
         'brand-cream-muted': '#f4eee3',
         'brand-cream-wash': '#fcf8f2',
@@ -37,7 +42,10 @@ const config: Config = {
         'brand-espresso': '#592314',
         'brand-burgundy': '#6d2034',
         'brand-rust': '#88281c',
+        'brand-red-oxide': '#88281c',
         'brand-mustard': '#ad6517',
+        'brand-peacock-soft': '#e8f3f5',
+        'brand-red-oxide-soft': '#f9ebe9',
       },
       borderRadius: {
         lg: 'var(--radius)',

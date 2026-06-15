@@ -33,6 +33,10 @@ export const metadata: Metadata = {
     description: siteConfig.description,
   },
   robots: { index: true, follow: true },
+  icons: {
+    icon: '/brand/artist-path-mark.png',
+    apple: '/brand/artist-path-mark.png',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

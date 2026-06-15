@@ -1,5 +1,6 @@
-import { Calendar, Clock, GraduationCap, IndianRupee, MapPin, Users } from 'lucide-react';
+import { Calendar, Clock, GraduationCap, IndianRupee, MapPin, Timer, Users } from 'lucide-react';
 import { ApplyButton } from '@/components/apply-button';
+import { ArtistPathLogo } from '@/components/brand/artist-path-logo';
 import { BrandPattern } from '@/components/brand/brand-pattern';
 import { SurfaceCard } from '@/components/ui/surface-card';
 import { siteConfig } from '@/lib/config';
@@ -8,23 +9,21 @@ import { frameworkPillars } from '@/lib/content';
 const programStats = [
   { icon: Clock, label: 'Duration', value: siteConfig.program.duration },
   { icon: Calendar, label: 'Start Date', value: siteConfig.program.startDate },
+  { icon: Timer, label: 'Apply By', value: siteConfig.program.registrationDeadline },
   { icon: MapPin, label: 'Format', value: siteConfig.program.format },
   { icon: Users, label: 'Artists Selected', value: String(siteConfig.program.artistsSelected) },
   { icon: GraduationCap, label: 'Scholarship Seats', value: siteConfig.program.scholarshipSeats },
-  { icon: IndianRupee, label: 'Artist Development Grant', value: siteConfig.program.developmentGrant },
+  { icon: IndianRupee, label: 'Program Fees', value: siteConfig.program.programFees },
 ];
-
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-brand-teal-deep text-brand-cream">
+    <section className="relative overflow-hidden bg-brand-red-oxide bg-gradient-to-br from-brand-red-oxide via-brand-burgundy to-brand-espresso text-brand-cream">
       <BrandPattern variant="hero" className="pointer-events-none absolute inset-0" />
 
       <div className="relative mx-auto max-w-6xl px-4 pb-12 pt-6 md:pb-20 md:pt-10">
         <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
           <div className="animate-fade-up space-y-6">
-            <p className="text-xs font-bold uppercase tracking-[0.25em] text-brand-cream/80">
-              The Artist Path
-            </p>
+            <ArtistPathLogo variant="lockup" className="h-12 md:h-14" priority />
             <h1 className="font-display text-4xl font-bold leading-[1.08] tracking-tight text-balance md:text-5xl lg:text-[3.25rem]">
               Build Your Music Career.
               <span className="block text-brand-cream/80">Not Just Your Next Song.</span>
@@ -34,13 +33,13 @@ export function HeroSection() {
             </p>
             <div className="flex flex-wrap items-center gap-3">
               <span className="rounded-full border border-brand-cream/25 bg-brand-cream/10 px-4 py-1.5 text-sm font-semibold text-brand-cream">
-                Applications Open
+                {siteConfig.registrationOpenLabel}
               </span>
               <span className="text-sm text-brand-cream/75">
                 {siteConfig.program.artistsSelected} Artists Selected
               </span>
             </div>
-            <ApplyButton size="lg" />
+            <ApplyButton size="lg" showCountdown />
           </div>
 
           <div className="animate-fade-up space-y-4" style={{ animationDelay: '0.12s' }}>
@@ -74,7 +73,7 @@ export function HeroSection() {
                 {frameworkPillars.map((pillar, i) => (
                   <span
                     key={pillar.label}
-                    className="inline-flex items-center gap-2 rounded-full border border-brand-cream/15 bg-brand-teal-deep/50 px-3 py-1.5 text-sm font-medium text-brand-cream"
+                    className="inline-flex items-center gap-2 rounded-full border border-brand-cream/15 bg-black/15 px-3 py-1.5 text-sm font-medium text-brand-cream"
                   >
                     <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand-pumpkin text-[10px] font-bold text-white">
                       {i + 1}

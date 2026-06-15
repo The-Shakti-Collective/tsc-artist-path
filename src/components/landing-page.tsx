@@ -21,10 +21,12 @@ import { FinalCtaSection } from '@/components/final-cta-section';
 import { HeroSection } from '@/components/hero-section';
 import { SectionDivider } from '@/components/section-divider';
 import { SiteHeader } from '@/components/site-header';
+import { ArtistPathLogo } from '@/components/brand/artist-path-logo';
 import { BrandPattern } from '@/components/brand/brand-pattern';
 import { SectionEyebrow } from '@/components/ui/section-eyebrow';
 import { SurfaceCard } from '@/components/ui/surface-card';
 import { siteConfig } from '@/lib/config';
+import { programHighlightRows } from '@/lib/program-highlights';
 import {
   artistBenefits,
   businessTopics,
@@ -174,7 +176,7 @@ export function LandingPage() {
         <div className="mt-12 grid gap-4 md:grid-cols-3">
           {notThisProgram.map((line) => (
             <SurfaceCard key={line} className="flex flex-col items-center p-6 text-center text-brand-teal-deep/80">
-              <X className="mb-3 h-6 w-6 text-brand-rust" aria-hidden />
+              <X className="mb-3 h-6 w-6 text-brand-burgundy" aria-hidden />
               {line}
             </SurfaceCard>
           ))}
@@ -196,7 +198,7 @@ export function LandingPage() {
       </section>
 
       {/* Why */}
-      <section className="relative overflow-hidden bg-brand-teal-deep py-16 text-brand-cream md:py-24">
+      <section className="relative overflow-hidden bg-brand-red-oxide bg-gradient-to-br from-brand-red-oxide via-brand-burgundy to-brand-espresso py-16 text-brand-cream md:py-24">
         <BrandPattern variant="hero" className="pointer-events-none absolute inset-0 opacity-35" />
         <div className="relative mx-auto max-w-6xl px-4">
           <SectionEyebrow light>Origin story</SectionEyebrow>
@@ -357,7 +359,7 @@ export function LandingPage() {
               {businessTopics.map((topic) => (
                 <span
                   key={topic}
-                  className="rounded-lg bg-brand-teal-deep px-3 py-1.5 text-sm font-medium text-brand-cream"
+                  className="rounded-lg bg-brand-peacock px-3 py-1.5 text-sm font-medium text-brand-cream"
                 >
                   {topic}
                 </span>
@@ -371,20 +373,13 @@ export function LandingPage() {
       </section>
 
       {/* Program structure bento */}
-      <section className="relative overflow-hidden bg-brand-teal-deep py-16 md:py-24">
+      <section className="relative overflow-hidden bg-brand-red-oxide bg-gradient-to-br from-brand-red-oxide via-brand-burgundy to-brand-espresso py-16 text-brand-cream md:py-24">
         <BrandPattern variant="hero" className="pointer-events-none absolute inset-0 opacity-30" />
         <div className="relative mx-auto max-w-6xl px-4">
           <SectionEyebrow light>At a glance</SectionEyebrow>
           <SectionHeading className="mt-3" title="Program Structure" light align="center" />
           <dl className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              { label: 'Duration', value: siteConfig.program.duration },
-              { label: 'Start Date', value: siteConfig.program.startDate },
-              { label: 'Format', value: siteConfig.program.format },
-              { label: 'Artists Selected', value: String(siteConfig.program.artistsSelected) },
-              { label: 'Scholarship Seats', value: siteConfig.program.scholarshipSeats },
-              { label: 'Artist Development Grant', value: siteConfig.program.developmentGrant },
-            ].map((item) => (
+            {programHighlightRows.map((item) => (
               <SurfaceCard key={item.label} variant="glass-dark" className="p-6 text-center">
                 <dt className="text-xs font-bold uppercase tracking-[0.15em] text-brand-cream/60">{item.label}</dt>
                 <dd className="mt-2 font-display text-2xl font-bold text-white">{item.value}</dd>
@@ -430,7 +425,8 @@ export function LandingPage() {
             </ol>
             <SurfaceCard variant="accent" className="mt-8 p-5">
               <p className="font-display text-xl font-bold text-brand-teal-deep">
-                Only {siteConfig.program.artistsSelected} artists will be selected.
+                Only {siteConfig.program.artistsSelected} artists will be selected. Apply by{' '}
+                {siteConfig.program.registrationDeadline} — program starts {siteConfig.program.startDate}.
               </p>
             </SurfaceCard>
           </div>
@@ -452,10 +448,13 @@ export function LandingPage() {
 
       <FinalCtaSection />
 
-      <footer className="relative border-t border-brand-teal-deep/10 bg-brand-cream-muted">
+      <footer className="relative border-t border-brand-peacock/10 bg-brand-cream-muted">
         <BrandPattern variant="footer" className="pointer-events-none absolute inset-0" />
-        <div className="relative mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 py-10 text-sm text-brand-teal-deep/65 md:flex-row">
-          <p>© {new Date().getFullYear()} {siteConfig.name}</p>
+        <div className="relative mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-4 py-10 text-sm text-brand-teal-deep/65 md:flex-row">
+          <div className="flex flex-col items-center gap-3 md:items-start">
+            <ArtistPathLogo variant="lockup" className="h-10" />
+            <p>© {new Date().getFullYear()} {siteConfig.name}</p>
+          </div>
           <p>
             A program by{' '}
             <a
