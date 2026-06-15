@@ -24,16 +24,20 @@ const config: Config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
-        brand: {
-          teal: '#083d3a',
-          green: '#126d5e',
-          'teal-mid': '#08525f',
-          cream: '#ffecd1',
-          pumpkin: '#b74b02',
-          burgundy: '#6d2034',
-          rust: '#88281c',
-          mustard: '#ad6517',
-        },
+        /* Flat keys — match class names used in components (gradients, opacity, etc.) */
+        'brand-teal-deep': '#083d3a',
+        'brand-green': '#126d5e',
+        'brand-teal-mid': '#08525f',
+        'brand-cream': '#ffecd1',
+        'brand-cream-muted': '#f4eee3',
+        'brand-cream-wash': '#fcf8f2',
+        'brand-pumpkin': '#b74b02',
+        'brand-pumpkin-soft': '#fef7e0',
+        'brand-green-soft': '#e6f4f1',
+        'brand-espresso': '#592314',
+        'brand-burgundy': '#6d2034',
+        'brand-rust': '#88281c',
+        'brand-mustard': '#ad6517',
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -46,7 +50,7 @@ const config: Config = {
       },
       animation: {
         'fade-up': 'fade-up 0.7s ease-out forwards',
-        'float': 'float 6s ease-in-out infinite',
+        float: 'float 6s ease-in-out infinite',
       },
       keyframes: {
         'fade-up': {

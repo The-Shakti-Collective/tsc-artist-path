@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { ApplyButton } from '@/components/apply-button';
 import { BrandPattern } from '@/components/brand/brand-pattern';
+import { FinalCtaSection } from '@/components/final-cta-section';
 import { HeroSection } from '@/components/hero-section';
 import { SectionDivider } from '@/components/section-divider';
 import { siteConfig } from '@/lib/config';
@@ -492,25 +493,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section id="apply" className="mx-auto max-w-6xl px-4 pb-20 md:pb-28">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-teal-deep via-brand-teal-mid to-brand-green p-8 text-brand-cream md:p-12">
-          <BrandPattern variant="hero" className="pointer-events-none absolute inset-0 opacity-25" />
-          <div className="relative max-w-2xl">
-            <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">
-              You already have the talent.
-            </h2>
-            <p className="mt-4 text-lg text-brand-cream/80">
-              Most artists spend years figuring things out alone. The Artist Path helps you move faster — with clarity,
-              community and real opportunity.
-            </p>
-            <p className="mt-4 font-display text-xl font-semibold">Are you ready to build the path?</p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <ApplyButton size="lg" variant="light" />
-            </div>
-          </div>
-        </div>
-      </section>
+      <FinalCtaSection />
 
       {/* Footer */}
       <footer className="relative border-t border-brand-teal-deep/10 bg-brand-cream-muted">
