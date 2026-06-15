@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { siteConfig } from '@/lib/config';
 import { cn } from '@/lib/utils';
@@ -9,9 +8,7 @@ type ApplyButtonProps = {
 };
 
 export function ApplyButton({ className, size = 'default' }: ApplyButtonProps) {
-  const externalApply = siteConfig.applyUrl?.trim();
-  const href = externalApply || '/apply';
-  const isExternal = Boolean(externalApply);
+  const href = siteConfig.applyUrl;
 
   const classes = cn(
     'inline-flex items-center justify-center gap-2 rounded-md font-semibold transition-all',
@@ -21,19 +18,10 @@ export function ApplyButton({ className, size = 'default' }: ApplyButtonProps) {
     className,
   );
 
-  if (isExternal) {
-    return (
-      <a href={href} className={classes} target="_blank" rel="noopener noreferrer">
-        Apply Now
-        <ArrowRight className="h-4 w-4" />
-      </a>
-    );
-  }
-
   return (
-    <Link href={href} className={classes}>
+    <a href={href} className={classes} target="_blank" rel="noopener noreferrer">
       Apply Now
       <ArrowRight className="h-4 w-4" />
-    </Link>
+    </a>
   );
 }
