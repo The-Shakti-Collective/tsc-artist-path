@@ -12,7 +12,7 @@ export function ApplyButton({ className, size = 'default', variant = 'primary' }
   const href = siteConfig.applyUrl;
 
   const classes = cn(
-    'inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-all',
+    'inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg font-semibold transition-all duration-200',
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
     variant === 'primary' &&
       'bg-brand-pumpkin text-white hover:bg-[#ad6517] focus-visible:ring-brand-pumpkin focus-visible:ring-offset-brand-teal-deep shadow-lg shadow-black/20',
