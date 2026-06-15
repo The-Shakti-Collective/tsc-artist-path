@@ -2,8 +2,23 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { ChevronDown } from 'lucide-react';
+import {
+  ChevronDown,
+  Compass,
+  Globe,
+  Headphones,
+  Layers,
+  Mic2,
+  Music2,
+  Rocket,
+  Sparkles,
+  Target,
+  TrendingUp,
+  Users,
+} from 'lucide-react';
 import { ApplyButton } from '@/components/apply-button';
+import { BrandPattern } from '@/components/brand/brand-pattern';
+import { HeroSection } from '@/components/hero-section';
 import { SectionDivider } from '@/components/section-divider';
 import { siteConfig } from '@/lib/config';
 import {
@@ -22,33 +37,42 @@ import {
 } from '@/lib/content';
 import { cn } from '@/lib/utils';
 
+const frameworkIcons = [Compass, Sparkles, Music2, Users, TrendingUp];
+const phaseIcons = [Compass, Mic2, Layers, Rocket, Globe, Target];
+
 function SectionHeading({
   title,
   subtitle,
-  className,
+  align = 'left',
+  light,
 }: {
   title: string;
   subtitle?: string;
-  className?: string;
+  align?: 'left' | 'center';
+  light?: boolean;
 }) {
   return (
-    <div className={cn('space-y-3', className)}>
-      <h2 className="font-display text-3xl font-semibold tracking-tight text-balance md:text-4xl">{title}</h2>
-      {subtitle ? <p className="max-w-2xl text-lg text-muted-foreground text-balance">{subtitle}</p> : null}
+    <div className={cn('space-y-3', align === 'center' && 'text-center mx-auto max-w-2xl')}>
+      <h2
+        className={cn(
+          'font-display text-3xl font-bold tracking-tight text-balance md:text-4xl',
+          light ? 'text-brand-cream' : 'text-brand-teal-deep',
+        )}
+      >
+        {title}
+      </h2>
+      {subtitle ? (
+        <p
+          className={cn(
+            'text-lg text-balance',
+            light ? 'text-brand-cream/75' : 'text-brand-teal-deep/70',
+            align === 'center' && 'mx-auto',
+          )}
+        >
+          {subtitle}
+        </p>
+      ) : null}
     </div>
-  );
-}
-
-function BulletList({ items }: { items: readonly string[] }) {
-  return (
-    <ul className="space-y-2 text-muted-foreground">
-      {items.map((item) => (
-        <li key={item} className="flex gap-3">
-          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-          <span>{item}</span>
-        </li>
-      ))}
-    </ul>
   );
 }
 
@@ -56,20 +80,25 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="rounded-lg border border-border bg-card/50">
+    <div className="rounded-xl border border-brand-teal-deep/10 bg-white shadow-sm">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
         className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
         aria-expanded={open}
       >
-        <span className="font-medium">{question}</span>
+        <span className="font-medium text-brand-teal-deep">{question}</span>
         <ChevronDown
-          className={cn('h-5 w-5 shrink-0 text-muted-foreground transition-transform', open && 'rotate-180')}
+          className={cn(
+            'h-5 w-5 shrink-0 text-brand-teal-deep/50 transition-transform',
+            open && 'rotate-180',
+          )}
         />
       </button>
       {open ? (
-        <div className="border-t border-border px-5 py-4 text-muted-foreground">{answer}</div>
+        <div className="border-t border-brand-teal-deep/10 px-5 py-4 text-brand-teal-deep/75">
+          {answer}
+        </div>
       ) : null}
     </div>
   );
@@ -77,178 +106,263 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
 
 export function LandingPage() {
   return (
-    <div className="relative">
+    <div className="relative bg-brand-cream-wash">
       {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-border/60 bg-background/90 backdrop-blur-md">
-        <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4">
-          <Link href="/" className="font-display text-lg font-semibold tracking-tight">
-            {siteConfig.name}
+      <header className="sticky top-0 z-50 border-b border-brand-teal-deep/10 bg-brand-cream-wash/90 backdrop-blur-md">
+        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
+          <Link href="/" className="flex items-center gap-2">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-teal-deep text-brand-cream">
+              <Music2 className="h-5 w-5" aria-hidden />
+            </div>
+            <span className="font-display text-lg font-bold text-brand-teal-deep">{siteConfig.name}</span>
           </Link>
           <ApplyButton size="default" />
         </div>
       </header>
 
-      {/* Hero */}
-      <section className="relative overflow-hidden border-b border-border">
-        <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_hsl(38_72%_55%/_0.12),_transparent_55%)]"
-          aria-hidden
-        />
-        <div className="mx-auto max-w-5xl px-4 py-20 md:py-28">
-          <div className="max-w-3xl space-y-8">
-            <p className="text-xs font-medium uppercase tracking-[0.25em] text-primary">The Artist Path</p>
-            <h1 className="font-display text-4xl font-semibold leading-[1.1] tracking-tight text-balance md:text-6xl">
-              Build Your Music Career.
-              <br />
-              <span className="text-muted-foreground">Not Just Your Next Song.</span>
-            </h1>
-            <p className="text-lg text-muted-foreground md:text-xl">
-              A 9-month accelerator for independent artists ready to move from skill to career.
-            </p>
-            <div className="flex flex-wrap items-center gap-4">
-              <span className="rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
-                Applications Open
-              </span>
-              <span className="text-sm text-muted-foreground">30 Artists Selected</span>
-            </div>
-            <ApplyButton size="lg" />
-          </div>
-        </div>
-      </section>
-
-      <SectionDivider />
+      <HeroSection />
 
       {/* Opportunity */}
-      <section className="mx-auto max-w-5xl px-4 py-16 md:py-20">
-        <SectionHeading title="The Opportunity Has Never Been Bigger" />
-        <div className="mt-10 space-y-6 text-muted-foreground">
-          <p className="text-lg text-foreground">India is one of the largest music markets in the world.</p>
-          <p>Hundreds of millions of listeners stream music every day.</p>
-          <p>Independent artists can now:</p>
-          <BulletList items={opportunityBullets} />
-          <p className="text-foreground">Yet most artists never realize their potential.</p>
-          <p>Not because they lack talent.</p>
-          <p className="font-medium text-foreground">Because talent alone is not enough.</p>
-          <p>The artists who build careers understand:</p>
-          <div className="flex flex-wrap gap-2">
-            {careerPillars.map((pillar) => (
-              <span
-                key={pillar}
-                className="rounded-md border border-border bg-muted/50 px-3 py-1.5 text-sm text-foreground"
-              >
-                {pillar}
-              </span>
-            ))}
+      <section className="relative mx-auto max-w-6xl px-4 py-16 md:py-20">
+        <BrandPattern variant="section" className="pointer-events-none absolute inset-0" />
+        <div className="relative">
+          <SectionHeading
+            title="The opportunity has never been bigger"
+            subtitle="India is one of the largest music markets in the world — but talent alone is not enough."
+          />
+          <div className="mt-12 grid gap-8 lg:grid-cols-2">
+            <div className="space-y-4">
+              <p className="text-lg font-medium text-brand-teal-deep">
+                Hundreds of millions of listeners stream music every day. Independent artists can now:
+              </p>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {opportunityBullets.map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-start gap-3 rounded-xl border border-brand-teal-deep/10 bg-white p-4 shadow-sm"
+                  >
+                    <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-brand-pumpkin" />
+                    <span className="text-brand-teal-deep/80">{item}</span>
+                  </div>
+                ))}
+              </div>
+              <p className="text-brand-teal-deep/70">
+                Yet most artists never realize their potential — not because they lack talent, but because they
+                lack the full picture.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-brand-teal-deep/10 bg-gradient-to-br from-brand-green-soft to-white p-6 md:p-8">
+              <p className="text-sm font-semibold uppercase tracking-[0.15em] text-brand-green">
+                Career builders understand
+              </p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {careerPillars.map((pillar) => (
+                  <span
+                    key={pillar}
+                    className="rounded-lg border border-brand-teal-deep/10 bg-white px-4 py-2 font-display text-sm font-semibold text-brand-teal-deep shadow-sm"
+                  >
+                    {pillar}
+                  </span>
+                ))}
+              </div>
+              <p className="mt-6 font-display text-xl font-bold text-brand-teal-deep">
+                The Artist Path helps you develop all five.
+              </p>
+            </div>
           </div>
-          <p className="text-lg font-medium text-foreground">
-            The Artist Path exists to help artists develop all five.
-          </p>
         </div>
       </section>
 
       <SectionDivider />
 
       {/* What is */}
-      <section className="mx-auto max-w-5xl px-4 py-16 md:py-20">
+      <section className="mx-auto max-w-6xl px-4 py-16 md:py-20">
         <SectionHeading
-          title="What Is The Artist Path?"
-          subtitle="The Artist Path is a 9-month artist accelerator designed for independent artists who are serious about building a professional music career."
+          title="What is The Artist Path?"
+          subtitle="A 9-month accelerator for independent artists serious about building a professional music career."
         />
-        <div className="mt-10 grid gap-8 md:grid-cols-2">
-          <div className="space-y-3">
-            {notThisProgram.map((line) => (
-              <p key={line} className="text-muted-foreground">{line}</p>
-            ))}
-          </div>
-          <div>
-            <p className="mb-4 font-medium text-foreground">It is a structured pathway that helps artists:</p>
-            <BulletList items={pathwayOutcomes} />
-          </div>
-        </div>
-      </section>
-
-      <SectionDivider />
-
-      {/* Why */}
-      <section className="mx-auto max-w-5xl px-4 py-16 md:py-20">
-        <SectionHeading title="Why We Built This" />
-        <div className="mt-10 space-y-6 text-muted-foreground">
-          <p>
-            Over the past 27 years, Rohith Sobti has worked across music labels, films, artists, IPs and talent
-            ecosystems.
-          </p>
-          <p>
-            He has worked with artists at different stages of their careers and has seen one recurring pattern:
-          </p>
-          <p className="text-lg font-medium text-foreground">Many talented artists never reach their potential.</p>
-          <p>Not because they lack skill.</p>
-          <p>
-            Because they lack guidance, structure, industry understanding and the right opportunities at the right
-            time.
-          </p>
-          <p className="text-lg font-medium text-foreground">The Artist Path was created to solve that problem.</p>
-        </div>
-      </section>
-
-      <SectionDivider />
-
-      {/* Framework */}
-      <section className="border-y border-border bg-muted/30 py-16 md:py-20">
-        <div className="mx-auto max-w-5xl px-4">
-          <SectionHeading
-            title="The Framework"
-            subtitle="This journey is at the heart of The Artist Path."
-          />
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {frameworkPillars.map((pillar, index) => (
-              <div
-                key={pillar.label}
-                className="group rounded-xl border border-border bg-card p-6 transition-colors hover:border-primary/40"
-              >
-                <p className="text-xs font-medium uppercase tracking-widest text-primary">
-                  {String(index + 1).padStart(2, '0')}
-                </p>
-                <h3 className="mt-3 font-display text-xl font-semibold">{pillar.label}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{pillar.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Work phases */}
-      <section className="mx-auto max-w-5xl px-4 py-16 md:py-20">
-        <SectionHeading title="What You Will Work On" />
-        <div className="mt-12 space-y-10">
-          {workPhases.map((phase) => (
-            <div key={phase.id} className="rounded-xl border border-border bg-card/40 p-6 md:p-8">
-              <h3 className="font-display text-2xl font-semibold">{phase.title}</h3>
-              <p className="mt-4 text-muted-foreground">{phase.intro}</p>
-              <div className="mt-6 grid gap-8 md:grid-cols-2">
-                <BulletList items={phase.bullets} />
-                <div>
-                  <p className="mb-3 text-sm font-medium uppercase tracking-wider text-primary">Outputs</p>
-                  <BulletList items={phase.outputs} />
-                </div>
-              </div>
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {notThisProgram.map((line) => (
+            <div
+              key={line}
+              className="rounded-xl border border-brand-rust/20 bg-brand-rust/5 p-5 text-center text-brand-teal-deep/80"
+            >
+              <span className="mb-2 block text-2xl text-brand-rust" aria-hidden>×</span>
+              {line}
             </div>
           ))}
         </div>
+        <div className="mt-10 rounded-2xl border border-brand-teal-deep/10 bg-white p-6 shadow-sm md:p-8">
+          <p className="font-semibold text-brand-teal-deep">It is a structured pathway that helps artists:</p>
+          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {pathwayOutcomes.map((outcome) => (
+              <div
+                key={outcome}
+                className="flex items-center gap-3 rounded-lg bg-brand-cream-muted/60 px-4 py-3 text-brand-teal-deep/85"
+              >
+                <Headphones className="h-4 w-4 shrink-0 text-brand-green" aria-hidden />
+                {outcome}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why */}
+      <section className="relative overflow-hidden bg-brand-teal-deep py-16 text-brand-cream md:py-20">
+        <BrandPattern variant="hero" className="pointer-events-none absolute inset-0 opacity-40" />
+        <div className="relative mx-auto max-w-6xl px-4">
+          <SectionHeading
+            title="Why we built this"
+            light
+            subtitle="27 years of working across labels, films, artists and talent ecosystems — one pattern kept repeating."
+          />
+          <div className="mt-10 grid gap-8 md:grid-cols-2">
+            <blockquote className="rounded-2xl border border-brand-cream/15 bg-brand-teal-mid/30 p-6 font-display text-2xl font-semibold leading-snug md:text-3xl">
+              Many talented artists never reach their potential — not because they lack skill, but because they lack
+              guidance, structure and the right opportunities.
+            </blockquote>
+            <div className="space-y-4 text-brand-cream/80">
+              <p>
+                Over the past 27 years, Rohith Sobti has worked across music labels, films, artists, IPs and talent
+                ecosystems.
+              </p>
+              <p className="text-lg font-semibold text-brand-cream">The Artist Path was created to solve that.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Framework journey */}
+      <section className="mx-auto max-w-6xl px-4 py-16 md:py-20">
+        <SectionHeading
+          title="The framework"
+          subtitle="Five pillars — one journey from self-discovery to sustainable career."
+          align="center"
+        />
+        <div className="mt-14 hidden md:block">
+          <div className="relative flex items-stretch justify-between gap-2">
+            <div
+              className="absolute left-[10%] right-[10%] top-8 h-0.5 bg-gradient-to-r from-brand-green via-brand-pumpkin to-brand-teal-mid"
+              aria-hidden
+            />
+            {frameworkPillars.map((pillar, index) => {
+              const Icon = frameworkIcons[index] ?? Sparkles;
+              return (
+                <div key={pillar.label} className="relative flex-1 text-center">
+                  <div
+                    className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border-2 border-brand-teal-deep/10 bg-white shadow-md"
+                  >
+                    <Icon className="h-7 w-7 text-brand-pumpkin" aria-hidden />
+                  </div>
+                  <p className="mt-4 text-xs font-bold uppercase tracking-widest text-brand-pumpkin">
+                    {String(index + 1).padStart(2, '0')}
+                  </p>
+                  <h3 className="mt-1 font-display text-lg font-bold text-brand-teal-deep">{pillar.label}</h3>
+                  <p className="mt-1 text-sm text-brand-teal-deep/65">{pillar.description}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 md:hidden">
+          {frameworkPillars.map((pillar, index) => {
+            const Icon = frameworkIcons[index] ?? Sparkles;
+            return (
+              <div
+                key={pillar.label}
+                className="flex gap-4 rounded-xl border border-brand-teal-deep/10 bg-white p-5 shadow-sm"
+              >
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-green-soft">
+                  <Icon className="h-6 w-6 text-brand-green" aria-hidden />
+                </div>
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-widest text-brand-pumpkin">
+                    {String(index + 1).padStart(2, '0')} · {pillar.label}
+                  </p>
+                  <p className="mt-1 text-sm text-brand-teal-deep/70">{pillar.description}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </section>
 
       <SectionDivider />
 
+      {/* Work phases timeline */}
+      <section className="bg-brand-cream-muted/40 py-16 md:py-20">
+        <div className="mx-auto max-w-6xl px-4">
+          <SectionHeading title="What you will work on" subtitle="Six phases from clarity to growth." />
+          <div className="mt-12 space-y-0">
+            {workPhases.map((phase, index) => {
+              const Icon = phaseIcons[index] ?? Target;
+              return (
+                <div key={phase.id} className="relative flex gap-6 pb-10 last:pb-0">
+                  {index < workPhases.length - 1 ? (
+                    <div
+                      className="absolute left-[23px] top-12 bottom-0 w-0.5 bg-brand-teal-deep/15 md:left-[27px]"
+                      aria-hidden
+                    />
+                  ) : null}
+                  <div
+                    className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-brand-pumpkin bg-white shadow-sm md:h-14 md:w-14"
+                  >
+                    <Icon className="h-5 w-5 text-brand-pumpkin md:h-6 md:w-6" aria-hidden />
+                  </div>
+                  <div className="flex-1 rounded-2xl border border-brand-teal-deep/10 bg-white p-6 shadow-sm md:p-8">
+                    <div className="flex flex-wrap items-center gap-3">
+                      <span className="rounded-full bg-brand-teal-deep px-3 py-0.5 text-xs font-bold uppercase tracking-wide text-brand-cream">
+                        Phase {index + 1}
+                      </span>
+                      <h3 className="font-display text-2xl font-bold text-brand-teal-deep">{phase.title}</h3>
+                    </div>
+                    <p className="mt-3 text-brand-teal-deep/70">{phase.intro}</p>
+                    <div className="mt-6 grid gap-6 md:grid-cols-2">
+                      <ul className="space-y-2">
+                        {phase.bullets.map((b) => (
+                          <li key={b} className="flex gap-2 text-brand-teal-deep/80">
+                            <span className="text-brand-green">→</span>
+                            {b}
+                          </li>
+                        ))}
+                      </ul>
+                      <div className="rounded-xl bg-brand-green-soft/50 p-4">
+                        <p className="text-xs font-bold uppercase tracking-widest text-brand-green">Outputs</p>
+                        <ul className="mt-3 space-y-2">
+                          {phase.outputs.map((o) => (
+                            <li key={o} className="flex gap-2 text-sm text-brand-teal-deep/85">
+                              <span className="text-brand-pumpkin">✓</span>
+                              {o}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* Benefits */}
-      <section className="mx-auto max-w-5xl px-4 py-16 md:py-20">
-        <SectionHeading title="What Artists Receive" subtitle="Every selected artist receives:" />
-        <ul className="mt-10 grid gap-3 sm:grid-cols-2">
+      <section className="mx-auto max-w-6xl px-4 py-16 md:py-20">
+        <SectionHeading
+          title="What artists receive"
+          subtitle="Every selected artist gets hands-on support across learning, mentoring and industry access."
+        />
+        <ul className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {artistBenefits.map((item) => (
             <li
               key={item}
-              className="flex items-start gap-3 rounded-lg border border-border bg-muted/20 px-4 py-3 text-muted-foreground"
+              className="flex items-start gap-3 rounded-xl border border-brand-teal-deep/10 bg-white px-4 py-3.5 shadow-sm transition-shadow hover:shadow-md"
             >
-              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-              {item}
+              <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-pumpkin/15 text-xs text-brand-pumpkin">
+                ✓
+              </span>
+              <span className="text-brand-teal-deep/85">{item}</span>
             </li>
           ))}
         </ul>
@@ -257,59 +371,69 @@ export function LandingPage() {
       <SectionDivider />
 
       {/* Industry + Business */}
-      <section className="mx-auto max-w-5xl px-4 py-16 md:py-20">
-        <div className="grid gap-12 md:grid-cols-2">
-          <div>
-            <SectionHeading title="Industry Exposure" />
-            <p className="mt-6 text-muted-foreground">
-              Throughout the program, artists interact with professionals across the ecosystem including:
+      <section className="mx-auto max-w-6xl px-4 py-16 md:py-20">
+        <div className="grid gap-10 lg:grid-cols-2">
+          <div className="rounded-2xl border border-brand-teal-deep/10 bg-white p-6 shadow-sm md:p-8">
+            <SectionHeading title="Industry exposure" />
+            <p className="mt-4 text-brand-teal-deep/70">
+              Throughout the program, artists interact with professionals across the ecosystem:
             </p>
             <div className="mt-6 flex flex-wrap gap-2">
               {industryExposure.map((role) => (
-                <span key={role} className="rounded-md border border-border px-3 py-1.5 text-sm text-muted-foreground">
+                <span
+                  key={role}
+                  className="rounded-lg border border-brand-teal-deep/10 bg-brand-cream-muted/50 px-3 py-1.5 text-sm text-brand-teal-deep/80"
+                >
                   {role}
                 </span>
               ))}
             </div>
-            <p className="mt-6 text-sm text-muted-foreground">
-              Because building a music career requires understanding more than music.
+            <p className="mt-6 text-sm text-brand-teal-deep/60">
+              Building a career requires understanding more than music alone.
             </p>
           </div>
-          <div>
-            <SectionHeading title="Understanding The Business" />
-            <p className="mt-6 text-muted-foreground">Artists will gain practical understanding of:</p>
+          <div className="rounded-2xl border border-brand-pumpkin/20 bg-gradient-to-br from-brand-pumpkin-soft to-white p-6 shadow-sm md:p-8">
+            <SectionHeading title="Understanding the business" />
+            <p className="mt-4 text-brand-teal-deep/70">Practical understanding of how money flows through music:</p>
             <div className="mt-6 flex flex-wrap gap-2">
               {businessTopics.map((topic) => (
-                <span key={topic} className="rounded-md bg-accent px-3 py-1.5 text-sm text-accent-foreground">
+                <span
+                  key={topic}
+                  className="rounded-lg bg-brand-teal-deep px-3 py-1.5 text-sm font-medium text-brand-cream"
+                >
                   {topic}
                 </span>
               ))}
             </div>
-            <p className="mt-6 text-sm font-medium text-foreground">
+            <p className="mt-6 font-semibold text-brand-teal-deep">
               Every artist should understand how money flows through music.
             </p>
           </div>
         </div>
       </section>
 
-      <SectionDivider />
-
       {/* Program structure */}
-      <section className="border-y border-border bg-muted/30 py-16 md:py-20">
-        <div className="mx-auto max-w-5xl px-4">
-          <SectionHeading title="Program Structure" />
-          <dl className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <section className="relative overflow-hidden bg-brand-teal-deep py-16 md:py-20">
+        <BrandPattern variant="hero" className="pointer-events-none absolute inset-0 opacity-30" />
+        <div className="relative mx-auto max-w-6xl px-4">
+          <SectionHeading title="Program structure" light align="center" />
+          <dl className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {[
               { label: 'Duration', value: siteConfig.program.duration },
-              { label: 'Start Date', value: siteConfig.program.startDate },
+              { label: 'Start date', value: siteConfig.program.startDate },
               { label: 'Format', value: siteConfig.program.format },
-              { label: 'Artists Selected', value: String(siteConfig.program.artistsSelected) },
-              { label: 'Scholarship Seats', value: siteConfig.program.scholarshipSeats },
-              { label: 'Artist Development Grant', value: siteConfig.program.developmentGrant },
+              { label: 'Artists selected', value: String(siteConfig.program.artistsSelected) },
+              { label: 'Scholarship seats', value: siteConfig.program.scholarshipSeats },
+              { label: 'Development grant', value: siteConfig.program.developmentGrant },
             ].map((item) => (
-              <div key={item.label} className="rounded-xl border border-border bg-card p-5">
-                <dt className="text-sm text-muted-foreground">{item.label}</dt>
-                <dd className="mt-1 font-display text-xl font-semibold">{item.value}</dd>
+              <div
+                key={item.label}
+                className="rounded-xl border border-brand-cream/15 bg-brand-teal-mid/30 p-6 text-center backdrop-blur-sm"
+              >
+                <dt className="text-xs font-semibold uppercase tracking-[0.15em] text-brand-cream/55">
+                  {item.label}
+                </dt>
+                <dd className="mt-2 font-display text-2xl font-bold text-brand-cream">{item.value}</dd>
               </div>
             ))}
           </dl>
@@ -317,27 +441,41 @@ export function LandingPage() {
       </section>
 
       {/* Who + Selection */}
-      <section className="mx-auto max-w-5xl px-4 py-16 md:py-20">
-        <div className="grid gap-12 md:grid-cols-2">
+      <section className="mx-auto max-w-6xl px-4 py-16 md:py-20">
+        <div className="grid gap-12 lg:grid-cols-2">
           <div>
-            <SectionHeading title="Who Should Apply?" subtitle="This program is designed for:" />
-            <BulletList items={whoShouldApply} />
+            <SectionHeading title="Who should apply?" subtitle="Designed for artists already creating original music." />
+            <ul className="mt-8 space-y-3">
+              {whoShouldApply.map((item) => (
+                <li
+                  key={item}
+                  className="flex items-center gap-3 rounded-lg border border-brand-teal-deep/10 bg-white px-4 py-3 shadow-sm"
+                >
+                  <Mic2 className="h-4 w-4 shrink-0 text-brand-green" aria-hidden />
+                  <span className="text-brand-teal-deep/85">{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
           <div>
-            <SectionHeading title="Selection Process" />
-            <ol className="mt-10 space-y-4">
+            <SectionHeading title="Selection process" />
+            <ol className="mt-8 space-y-4">
               {selectionSteps.map((step, index) => (
-                <li key={step} className="flex gap-4">
+                <li key={step} className="flex items-center gap-4">
                   <span
-                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-primary/40 bg-primary/10 text-sm font-semibold text-primary"
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-pumpkin font-display text-sm font-bold text-white shadow-md shadow-brand-pumpkin/30"
                   >
                     {index + 1}
                   </span>
-                  <span className="pt-1 text-muted-foreground">{step}</span>
+                  <span className="text-brand-teal-deep/85">{step}</span>
                 </li>
               ))}
             </ol>
-            <p className="mt-8 font-medium text-foreground">Only 30 artists will be selected.</p>
+            <div className="mt-8 rounded-xl border border-brand-pumpkin/30 bg-brand-pumpkin-soft p-5">
+              <p className="font-display text-xl font-bold text-brand-teal-deep">
+                Only {siteConfig.program.artistsSelected} artists will be selected.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -345,47 +483,45 @@ export function LandingPage() {
       <SectionDivider />
 
       {/* FAQ */}
-      <section className="mx-auto max-w-5xl px-4 py-16 md:py-20">
-        <SectionHeading title="Frequently Asked Questions" />
-        <div className="mt-10 space-y-3">
+      <section className="mx-auto max-w-6xl px-4 py-16 md:py-20">
+        <SectionHeading title="Frequently asked questions" align="center" />
+        <div className="mt-10 mx-auto max-w-3xl space-y-3">
           {faqs.map((faq) => (
             <FaqItem key={faq.question} question={faq.question} answer={faq.answer} />
           ))}
         </div>
       </section>
 
-      <SectionDivider />
-
       {/* Final CTA */}
-      <section id="apply" className="mx-auto max-w-5xl px-4 py-16 md:py-24">
-        <div className="rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/10 via-card to-card p-8 md:p-12">
-          <h2 className="font-display text-3xl font-semibold tracking-tight md:text-4xl">Final Thought</h2>
-          <div className="mt-6 space-y-4 text-muted-foreground">
-            <p>Most artists spend years trying to figure things out alone.</p>
-            <p>
-              The Artist Path exists to help artists move faster, make better decisions, and build a meaningful career
-              with clarity, community and opportunity.
+      <section id="apply" className="mx-auto max-w-6xl px-4 pb-20 md:pb-28">
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-teal-deep via-brand-teal-mid to-brand-green p-8 text-brand-cream md:p-12">
+          <BrandPattern variant="hero" className="pointer-events-none absolute inset-0 opacity-25" />
+          <div className="relative max-w-2xl">
+            <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">
+              You already have the talent.
+            </h2>
+            <p className="mt-4 text-lg text-brand-cream/80">
+              Most artists spend years figuring things out alone. The Artist Path helps you move faster — with clarity,
+              community and real opportunity.
             </p>
-            <p className="text-lg font-medium text-foreground">You already have the talent.</p>
-            <p className="text-lg font-medium text-foreground">Are you ready to build the path?</p>
-          </div>
-          <div className="mt-8">
-            <ApplyButton size="lg" />
+            <p className="mt-4 font-display text-xl font-semibold">Are you ready to build the path?</p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <ApplyButton size="lg" variant="light" />
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border bg-muted/20">
-        <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 px-4 py-8 text-sm text-muted-foreground md:flex-row">
-          <p>
-            © {new Date().getFullYear()} {siteConfig.name}
-          </p>
+      <footer className="relative border-t border-brand-teal-deep/10 bg-brand-cream-muted">
+        <BrandPattern variant="footer" className="pointer-events-none absolute inset-0" />
+        <div className="relative mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 py-10 text-sm text-brand-teal-deep/60 md:flex-row">
+          <p>© {new Date().getFullYear()} {siteConfig.name}</p>
           <p>
             A program by{' '}
             <a
               href={siteConfig.tscWebsiteUrl}
-              className="text-foreground underline-offset-4 hover:underline"
+              className="font-medium text-brand-teal-deep underline-offset-4 hover:underline"
               target="_blank"
               rel="noopener noreferrer"
             >

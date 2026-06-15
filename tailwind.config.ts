@@ -24,6 +24,16 @@ const config: Config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        brand: {
+          teal: '#083d3a',
+          green: '#126d5e',
+          'teal-mid': '#08525f',
+          cream: '#ffecd1',
+          pumpkin: '#b74b02',
+          burgundy: '#6d2034',
+          rust: '#88281c',
+          mustard: '#ad6517',
+        },
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -31,8 +41,22 @@ const config: Config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       fontFamily: {
-        display: ['var(--font-display)', 'Georgia', 'serif'],
+        display: ['var(--font-display)', 'system-ui', 'sans-serif'],
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+      },
+      animation: {
+        'fade-up': 'fade-up 0.7s ease-out forwards',
+        'float': 'float 6s ease-in-out infinite',
+      },
+      keyframes: {
+        'fade-up': {
+          from: { opacity: '0', transform: 'translateY(16px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-8px)' },
+        },
       },
     },
   },
