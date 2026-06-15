@@ -372,12 +372,6 @@ export function LandingPage() {
           <div className="mt-8">
             <ApplyButton size="lg" />
           </div>
-          {!siteConfig.applyUrl ? (
-            <p className="mt-4 text-sm text-muted-foreground">
-              Set <code className="rounded bg-muted px-1.5 py-0.5 text-xs">NEXT_PUBLIC_APPLY_URL</code> in Vercel to
-              link Apply Now to your application form.
-            </p>
-          ) : null}
         </div>
       </section>
 

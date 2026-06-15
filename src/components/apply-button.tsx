@@ -9,8 +9,9 @@ type ApplyButtonProps = {
 };
 
 export function ApplyButton({ className, size = 'default' }: ApplyButtonProps) {
-  const href = siteConfig.applyUrl || '#apply';
-  const isExternal = siteConfig.applyUrl.startsWith('http');
+  const externalApply = siteConfig.applyUrl?.trim();
+  const href = externalApply || '/apply';
+  const isExternal = Boolean(externalApply);
 
   const classes = cn(
     'inline-flex items-center justify-center gap-2 rounded-md font-semibold transition-all',

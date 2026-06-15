@@ -15,15 +15,18 @@ pnpm --filter @tsc/artist-path dev
 
 Open [http://localhost:3010](http://localhost:3010).
 
-## Environment
+## Application submissions
 
-Copy `.env.example` to `.env.local`:
+Built-in form at `/apply` posts to Platform API `POST /api/public/artist-path/applications`. Responses are stored in PostgreSQL (`ArtistPathApplication`) and visible in CoreKnot Admin → Artist Path when `VITE_TSC_API_URL` points at the Platform API.
+
+**Vercel env (artist-path site):**
 
 | Variable | Purpose |
 |----------|---------|
-| `NEXT_PUBLIC_SITE_URL` | Canonical site URL (production: `https://theartistpath.in`) |
-| `NEXT_PUBLIC_APPLY_URL` | External application form URL for Apply Now buttons |
-| `NEXT_PUBLIC_TSC_WEBSITE_URL` | Link back to TSC main site |
+| `TSC_API_URL` | Platform API base, e.g. `https://api.theshakticollective.in/api` |
+| `ARTIST_PATH_WEBHOOK_SECRET` | Must match Platform API `ARTIST_PATH_WEBHOOK_SECRET` |
+
+**Platform API** also needs `TSC_DEFAULT_ORG_ID` and `ARTIST_PATH_WEBHOOK_SECRET`. Run migration `20250615000000_artist_path_applications` on Neon before prod submissions.
 
 ## Vercel deploy
 
