@@ -1,6 +1,5 @@
 import { Calendar, Clock, GraduationCap, IndianRupee, MapPin, Timer, Users } from 'lucide-react';
 import { ApplyButton } from '@/components/apply-button';
-import { ArtistPathLogo } from '@/components/brand/artist-path-logo';
 import { BrandPattern } from '@/components/brand/brand-pattern';
 import { SurfaceCard } from '@/components/ui/surface-card';
 import { siteConfig } from '@/lib/config';
@@ -23,7 +22,9 @@ export function HeroSection() {
       <div className="relative mx-auto max-w-6xl px-4 pb-12 pt-6 md:pb-20 md:pt-10">
         <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
           <div className="animate-fade-up space-y-6">
-            <ArtistPathLogo variant="lockup" className="h-12 md:h-14" priority />
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-brand-cream/80">
+              The Artist Path
+            </p>
             <h1 className="font-display text-4xl font-bold leading-[1.08] tracking-tight text-balance md:text-5xl lg:text-[3.25rem]">
               Build Your Music Career.
               <span className="block text-brand-cream/80">Not Just Your Next Song.</span>

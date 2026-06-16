@@ -38,7 +38,7 @@ export function ApplyButton({
     variant === 'primary' &&
       'bg-brand-peacock text-brand-cream hover:bg-brand-green focus-visible:ring-brand-peacock focus-visible:ring-offset-brand-red-oxide shadow-lg shadow-black/25',
     variant === 'light' &&
-      'bg-brand-cream text-brand-peacock hover:bg-white focus-visible:ring-brand-cream focus-visible:ring-offset-brand-red-oxide shadow-lg shadow-black/20',
+      'bg-brand-cream text-brand-peacock hover:bg-brand-cream/90 focus-visible:ring-brand-cream focus-visible:ring-offset-brand-red-oxide shadow-lg shadow-black/20',
     !showCountdown && (size === 'lg' ? 'h-12 px-8 text-base' : 'h-11 px-6 text-sm'),
     showCountdown && 'h-auto min-h-12 px-8 text-base',
     className,

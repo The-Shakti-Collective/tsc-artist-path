@@ -9,8 +9,8 @@ type ArtistPathLogoProps = {
 };
 
 const sizes = {
-  mark: { width: 80, height: 80, alt: 'The Artist Path mark' },
-  lockup: { width: 320, height: 96, alt: 'The Artist Path' },
+  mark: { width: 97, height: 152, alt: 'The Artist Path mark' },
+  lockup: { width: 793, height: 453, alt: 'The Artist Path' },
 } as const;
 
 export function ArtistPathLogo({
@@ -28,6 +28,7 @@ export function ArtistPathLogo({
       width={width}
       height={height}
       priority={priority}
+      unoptimized
       className={cn('h-auto w-auto object-contain', className)}
     />
   );

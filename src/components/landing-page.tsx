@@ -73,7 +73,7 @@ function SectionHeading({
         <p
           className={cn(
             'text-lg text-balance leading-relaxed',
-            light ? 'text-brand-cream/85' : 'text-brand-teal-deep/75',
+            light ? 'text-brand-cream/85' : 'text-brand-teal-deep/80',
           )}
         >
           {subtitle}
@@ -97,7 +97,7 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
         <span className="font-medium text-brand-teal-deep">{question}</span>
         <ChevronDown
           className={cn(
-            'h-5 w-5 shrink-0 text-brand-teal-deep/50 transition-transform duration-200',
+            'h-5 w-5 shrink-0 text-brand-teal-deep/60 transition-transform duration-200',
             open && 'rotate-180',
           )}
         />

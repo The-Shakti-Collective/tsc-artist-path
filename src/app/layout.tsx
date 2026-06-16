@@ -33,16 +33,12 @@ export const metadata: Metadata = {
     description: siteConfig.description,
   },
   robots: { index: true, follow: true },
-  icons: {
-    icon: '/brand/artist-path-mark.png',
-    apple: '/brand/artist-path-mark.png',
-  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${sans.variable} ${display.variable}`}>
-      <body className="min-h-screen bg-brand-cream-wash text-brand-teal-deep">{children}</body>
+      <body className="min-h-screen bg-brand-cream-wash text-brand-teal-deep antialiased">{children}</body>
     </html>
   );
 }
