@@ -20,8 +20,8 @@ import {
 import { FinalCtaSection } from '@/components/final-cta-section';
 import { HeroSection } from '@/components/hero-section';
 import { SectionDivider } from '@/components/section-divider';
+import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
-import { ArtistPathLogo } from '@/components/brand/artist-path-logo';
 import { BrandPattern } from '@/components/brand/brand-pattern';
 import { SectionEyebrow } from '@/components/ui/section-eyebrow';
 import { SurfaceCard } from '@/components/ui/surface-card';
@@ -448,26 +448,7 @@ export function LandingPage() {
 
       <FinalCtaSection />
 
-      <footer className="relative border-t border-brand-peacock/10 bg-brand-cream-muted">
-        <BrandPattern variant="footer" className="pointer-events-none absolute inset-0" />
-        <div className="relative mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-4 py-10 text-sm text-brand-teal-deep/65 md:flex-row">
-          <div className="flex flex-col items-center gap-3 md:items-start">
-            <ArtistPathLogo variant="lockup" className="h-10" />
-            <p>© {new Date().getFullYear()} {siteConfig.name}</p>
-          </div>
-          <p>
-            A program by{' '}
-            <a
-              href={siteConfig.tscWebsiteUrl}
-              className="cursor-pointer font-medium text-brand-teal-deep underline-offset-4 transition-colors duration-200 hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              The Shakti Collective
-            </a>
-          </p>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

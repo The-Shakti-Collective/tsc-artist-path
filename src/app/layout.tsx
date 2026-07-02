@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { DM_Sans, Space_Grotesk } from 'next/font/google';
+import { ClarityAnalytics } from '@/components/analytics/clarity-analytics';
 import { siteConfig } from '@/lib/config';
 import './globals.css';
 
@@ -38,7 +39,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${sans.variable} ${display.variable}`}>
-      <body className="min-h-screen bg-brand-cream-wash text-brand-teal-deep antialiased">{children}</body>
+      <body className="min-h-screen bg-brand-cream-wash text-brand-teal-deep antialiased">
+        {children}
+        <ClarityAnalytics />
+      </body>
     </html>
   );
 }
