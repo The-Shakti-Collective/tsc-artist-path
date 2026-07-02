@@ -2,18 +2,17 @@ import { ArtistPathLogo } from '@/components/brand/artist-path-logo';
 import { BrandPattern } from '@/components/brand/brand-pattern';
 import { CLARITY_SITE_DISCLOSURE } from '@/lib/clarityDisclosure';
 import { siteConfig } from '@/lib/config';
+import { PRIVACY_POLICY_PATH } from '@/lib/privacyPolicyContent';
 
 export function SiteFooter() {
-  const privacyHref = siteConfig.privacyPolicyUrl;
+  const privacyHref = PRIVACY_POLICY_PATH;
 
   return (
     <footer className="relative border-t border-brand-peacock/10 bg-brand-cream-muted">
       <BrandPattern variant="footer" className="pointer-events-none absolute inset-0" />
       <div className="relative mx-auto max-w-6xl px-4 py-10">
         <p className="mx-auto mb-8 max-w-3xl text-center text-[11px] leading-relaxed text-brand-teal-deep/55">
-          {CLARITY_SITE_DISCLOSURE.lead}{' '}
-          {CLARITY_SITE_DISCLOSURE.agreement}{' '}
-          Our{' '}
+          {CLARITY_SITE_DISCLOSURE.summary}{' '}
           <a
             href={privacyHref}
             className="underline underline-offset-2 transition-colors duration-200 hover:text-brand-teal-deep/80"

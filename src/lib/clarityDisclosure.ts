@@ -3,11 +3,9 @@
  * @see https://learn.microsoft.com/en-us/clarity/setup-and-installation/privacy-disclosure
  */
 export const CLARITY_SITE_DISCLOSURE = {
-  lead:
-    'We improve our products and advertising by using Microsoft Clarity to see how you use our website.',
-  agreement:
-    'By using our site, you agree that we and Microsoft can collect and use this data.',
-  privacyLinkLabel: 'privacy statement',
+  summary:
+    'We use analytics, including Microsoft Clarity, to understand how visitors use our site and to improve our products and marketing.',
+  privacyLinkLabel: 'Privacy Policy',
 } as const;
 
 export const CLARITY_PRIVACY_POLICY_DISCLOSURE =

@@ -7,7 +7,7 @@ export const siteConfig = {
   applyUrl: process.env.NEXT_PUBLIC_APPLY_URL?.trim() || 'https://theshakticollective.in/artist-path',
   tscWebsiteUrl: process.env.NEXT_PUBLIC_TSC_WEBSITE_URL ?? 'https://theshakticollective.in',
   privacyPolicyUrl:
-    process.env.NEXT_PUBLIC_PRIVACY_POLICY_URL?.trim() || 'https://tsccoreknot.com/privacy',
+    process.env.NEXT_PUBLIC_PRIVACY_POLICY_URL?.trim() || '/privacy',
   applyButtonLabel: 'Apply Till 7th July',
   registrationOpenLabel: 'Registrations open till 7th July',
   program: {
