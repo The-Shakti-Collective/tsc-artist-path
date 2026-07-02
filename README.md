@@ -6,14 +6,16 @@ Part of the TSC Platform monorepo (`apps/artist-path`). Deployed from the standa
 
 ## Local dev
 
-From monorepo root:
+Copy **`.env.example`** → **`.env.local`**.
 
 ```bash
-pnpm install
-pnpm --filter @tsc/artist-path dev
+npm install
+npm run dev
 ```
 
-Open [http://localhost:3010](http://localhost:3010).
+**Analytics & privacy:** [docs/ANALYTICS_AND_PRIVACY.md](docs/ANALYTICS_AND_PRIVACY.md) — Clarity, `/privacy`, env vars.
+
+Open [http://localhost:3010](http://localhost:3010) (or your configured port).
 
 ## Application submissions
 
@@ -36,7 +38,7 @@ Apply CTAs link to the TSC Website wizard at `https://theshakticollective.in/art
 1. Import `The-Shakti-Collective/tsc-artist-path` in Vercel.
 2. Framework preset: Next.js (repo root — not monorepo).
 3. Uses **npm** (`package-lock.json` + `vercel.json` installCommand). Do not use `pnpm install` on this standalone repo.
-4. Optional env: `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_TSC_WEBSITE_URL`, `NEXT_PUBLIC_APPLY_URL`.
+4. Env: copy `.env.example` → `.env.local`. See [docs/ANALYTICS_AND_PRIVACY.md](docs/ANALYTICS_AND_PRIVACY.md).
 5. Add custom domain `theartistpath.in` (+ `www` if desired).
 
 ## TSC Website link

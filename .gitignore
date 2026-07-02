@@ -11,6 +11,7 @@ out/
 .env
 .env.local
 .env.*.local
+!.env.example
 
 # debug
 npm-debug.log*
@@ -22,3 +23,5 @@ next-env.d.ts
 
 # vercel
 .vercel
+.env*
+!.env.example
