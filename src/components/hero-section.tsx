@@ -4,6 +4,7 @@ import { BrandPattern } from '@/components/brand/brand-pattern';
 import { SurfaceCard } from '@/components/ui/surface-card';
 import { siteConfig } from '@/lib/config';
 import { frameworkPillars } from '@/lib/content';
+import { artistPathHero } from '@/lib/artist-path-content';
 
 const programStats = [
   { icon: Clock, label: 'Duration', value: siteConfig.program.duration },
@@ -30,8 +31,16 @@ export function HeroSection() {
               <span className="block text-brand-cream/80">Not Just Your Next Song.</span>
             </h1>
             <p className="max-w-xl text-lg leading-relaxed text-brand-cream/90 md:text-xl">
-              A 9-month accelerator for independent artists ready to move from skill to career.
+              {artistPathHero.description}
             </p>
+            <ul className="max-w-xl space-y-1.5 text-sm text-brand-cream/80" aria-label="Who this program is for">
+              {artistPathHero.qualifiers.map((item) => (
+                <li key={item} className="flex items-start gap-2">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-pumpkin" aria-hidden />
+                  {item}
+                </li>
+              ))}
+            </ul>
             <div className="flex flex-wrap items-center gap-3">
               <span className="rounded-full border border-brand-cream/25 bg-brand-cream/10 px-4 py-1.5 text-sm font-semibold text-brand-cream">
                 {siteConfig.registrationOpenLabel}
