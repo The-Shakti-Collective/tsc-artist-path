@@ -1,14 +1,5 @@
-import type { NextConfig } from 'next';
-import path from 'path';
+﻿import type { NextConfig } from 'next';
 
-const nextConfig: NextConfig = {
-  experimental: {
-    externalDir: true,
-  },
-  webpack: (config) => {
-    config.resolve.alias['@shared'] = path.join(__dirname, '../shared');
-    return config;
-  },
-};
+const nextConfig: NextConfig = {};
 
 export default nextConfig;

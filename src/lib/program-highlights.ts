@@ -1,4 +1,5 @@
-import { siteConfig } from '@/lib/config';
+﻿import { siteConfig } from '@/lib/config';
+import { artistPathProgram } from '@/lib/artist-path-content';
 
 export const programHighlightRows = [
   { label: 'DURATION', value: siteConfig.program.duration },

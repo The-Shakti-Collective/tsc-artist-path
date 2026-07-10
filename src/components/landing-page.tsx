@@ -11,6 +11,7 @@ import { HeroSection } from '@/components/hero-section';
 import { ProgramAtAGlanceSection } from '@/components/program-at-a-glance-section';
 import { SectionDivider } from '@/components/section-divider';
 import { SiteHeader } from '@/components/site-header';
+import { SiteFooter } from '@/components/site-footer';
 import { BrandPattern } from '@/components/brand/brand-pattern';
 import { Reveal, Stagger, StaggerItem } from '@/components/motion/reveal';
 import { SectionEyebrow } from '@/components/ui/section-eyebrow';
@@ -28,15 +29,6 @@ import {
   whoShouldApply,
 } from '@/lib/content';
 import { cn } from '@/lib/utils';
-
-const footerLinks = [
-  { label: 'About', href: `${siteConfig.tscWebsiteUrl}/#about` },
-  { label: 'Work', href: `${siteConfig.tscWebsiteUrl}/ip` },
-  { label: 'Artists', href: `${siteConfig.tscWebsiteUrl}/artists` },
-  { label: 'Resources', href: `${siteConfig.tscWebsiteUrl}/resources` },
-  { label: 'TSC Academy', href: `${siteConfig.tscWebsiteUrl}/tscacademy` },
-  { label: 'Stories', href: `${siteConfig.tscWebsiteUrl}/#stories` },
-] as const;
 
 function SectionHeading({
   title,
@@ -327,26 +319,7 @@ export function LandingPage() {
       <FaqSection />
 
       <FinalCtaSection />
-
-      <footer className="relative border-t border-brand-peacock/10 bg-brand-cream-muted">
-        <BrandPattern variant="footer" className="pointer-events-none absolute inset-0" />
-        <div className="relative mx-auto max-w-6xl px-4 py-10">
-          <nav className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-brand-teal-deep/75">
-            {footerLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="transition-colors hover:text-brand-teal-deep"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-          <p className="mt-6 text-center text-sm text-brand-teal-deep/60">
-            © {new Date().getFullYear()} The Shakti Collective
-          </p>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

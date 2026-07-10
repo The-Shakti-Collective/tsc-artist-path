@@ -1,18 +1,39 @@
-/** Re-export shared Artist Path content for tsc-artist-path app */
-export {
-  artistPathProgram,
-  artistPathHero,
-  frameworkPillars,
-  workPhases,
+﻿import { siteConfig } from '@/lib/config';
+import {
   artistBenefits,
-  industryExposure,
+  artistPathFaqs,
   businessTopics,
-  whoShouldApply,
-  selectionSteps,
-  artistPathFaqs as faqs,
-  opportunityBullets,
   careerPillars,
+  frameworkPillars,
+  industryExposure,
   notThisProgram,
+  opportunityBullets,
   pathwayOutcomes,
-  programGlance,
-} from '@shared/artist-path-content';
+  selectionSteps,
+  whoShouldApply,
+  workPhases,
+} from '@/lib/artist-path-content';
+
+export {
+  artistBenefits,
+  businessTopics,
+  careerPillars,
+  frameworkPillars,
+  industryExposure,
+  notThisProgram,
+  opportunityBullets,
+  pathwayOutcomes,
+  selectionSteps,
+  whoShouldApply,
+  workPhases,
+};
+
+export const faqs = artistPathFaqs.map((faq) => {
+  if (faq.question === 'When is the last date to apply?') {
+    return {
+      ...faq,
+      answer: `Registrations are open until ${siteConfig.program.registrationDeadline}. The program begins on ${siteConfig.program.startDate}.`,
+    };
+  }
+  return faq;
+});

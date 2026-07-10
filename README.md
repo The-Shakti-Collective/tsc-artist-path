@@ -2,18 +2,18 @@
 
 Landing site for the TSC Artist Path accelerator — hosted at [theartistpath.in](https://theartistpath.in).
 
-Part of the TSC Platform monorepo (`apps/artist-path`). Deployed from the standalone repo [The-Shakti-Collective/tsc-artist-path](https://github.com/The-Shakti-Collective/tsc-artist-path).
+Part of the TSC Platform monorepo (`website/tsc-artist-path`). Deployed from the standalone repo [The-Shakti-Collective/tsc-artist-path](https://github.com/The-Shakti-Collective/tsc-artist-path).
 
 ## Local dev
 
-From monorepo root:
+Create **`.env.local`** (gitignored). Copy env blocks from **`website/shared/SEO-ANALYTICS-ENTITY-GUIDE.md`** in the monorepo workspace (local-only — not on GitHub).
 
 ```bash
-pnpm install
-pnpm --filter @tsc/artist-path dev
+npm install
+npm run dev
 ```
 
-Open [http://localhost:3010](http://localhost:3010).
+Open [http://localhost:3010](http://localhost:3010) (or your configured port).
 
 ## Application submissions
 
@@ -21,13 +21,7 @@ Apply CTAs link to the TSC Website wizard at `https://theshakticollective.in/art
 
 `/apply` on this site redirects to the main-site form.
 
-**TSC Website (Vercel) env:**
-
-| Variable | Purpose |
-|----------|---------|
-| `TSC_API_URL` | Platform API base, e.g. `https://api.theshakticollective.in/api` |
-| `ARTIST_PATH_WEBHOOK_SECRET` | Must match Platform API `ARTIST_PATH_WEBHOOK_SECRET` |
-| `NEXT_PUBLIC_ARTIST_PATH_URL` | Landing link, e.g. `https://theartistpath.in` |
+**TSC Website (Vercel) env** for Artist Path handoff: `TSC_API_URL`, `ARTIST_PATH_WEBHOOK_SECRET`, `NEXT_PUBLIC_ARTIST_PATH_URL` — see local shared guide and [TSC-Website docs/INTEGRATION.md](../TSC-Website/docs/INTEGRATION.md).
 
 **Platform API** also needs `TSC_DEFAULT_ORG_ID` and `ARTIST_PATH_WEBHOOK_SECRET`. Run migration `20250615000000_artist_path_applications` on Neon before prod submissions.
 
@@ -36,7 +30,7 @@ Apply CTAs link to the TSC Website wizard at `https://theshakticollective.in/art
 1. Import `The-Shakti-Collective/tsc-artist-path` in Vercel.
 2. Framework preset: Next.js (repo root — not monorepo).
 3. Uses **npm** (`package-lock.json` + `vercel.json` installCommand). Do not use `pnpm install` on this standalone repo.
-4. Optional env: `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_TSC_WEBSITE_URL`, `NEXT_PUBLIC_APPLY_URL`.
+4. Set env vars in Vercel (copy from local shared guide).
 5. Add custom domain `theartistpath.in` (+ `www` if desired).
 
 ## TSC Website link

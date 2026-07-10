@@ -11,7 +11,7 @@ export function ArtistPathIntroSection() {
         <h2 className="font-display text-3xl font-bold tracking-tight text-brand-teal-deep md:text-4xl">
           The Artist Path
         </h2>
-        <ApplyButton size="lg" label={siteConfig.enrollButtonLabel} />
+        <ApplyButton size="lg" label={siteConfig.applyButtonLabel} />
       </Reveal>
     </section>
   );
