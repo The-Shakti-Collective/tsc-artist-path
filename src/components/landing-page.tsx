@@ -300,7 +300,7 @@ export function LandingPage() {
             <ol className="mt-8 space-y-6">
               {selectionSteps.map((step, index) => (
                 <motion.li
-                  key={step.number}
+                  key={step}
                   className="flex gap-4"
                   {...(!reduceMotion && {
                     initial: { opacity: 0, x: -16 },
@@ -310,14 +310,10 @@ export function LandingPage() {
                   })}
                 >
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-pumpkin font-display text-sm font-bold text-white shadow-soft">
-                    {step.number}
+                    {index + 1}
                   </span>
                   <div className="space-y-1 pt-1">
-                    {step.items.map((item) => (
-                      <p key={item} className="text-brand-teal-deep/90">
-                        {item}
-                      </p>
-                    ))}
+                    <p className="text-brand-teal-deep/90">{step}</p>
                   </div>
                 </motion.li>
               ))}
