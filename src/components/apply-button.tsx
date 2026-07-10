@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { ArrowRight } from 'lucide-react';
 import { siteConfig } from '@/lib/config';
 import { getRegistrationCountdown } from '@/lib/registration-countdown';
 import { cn } from '@/lib/utils';
@@ -11,6 +10,7 @@ type ApplyButtonProps = {
   size?: 'default' | 'lg';
   variant?: 'primary' | 'light';
   showCountdown?: boolean;
+  label?: string;
 };
 
 export function ApplyButton({
@@ -18,6 +18,7 @@ export function ApplyButton({
   size = 'default',
   variant = 'primary',
   showCountdown = false,
+  label = siteConfig.applyButtonLabel,
 }: ApplyButtonProps) {
   const href = siteConfig.applyUrl;
   const [countdown, setCountdown] = useState(() => getRegistrationCountdown());
@@ -32,7 +33,7 @@ export function ApplyButton({
   }, [showCountdown]);
 
   const classes = cn(
-    'inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg font-semibold transition-all duration-200',
+    'inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg font-semibold uppercase tracking-wide transition-all duration-200',
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
     showCountdown && 'flex-col gap-1 py-3',
     variant === 'primary' &&
@@ -46,12 +47,9 @@ export function ApplyButton({
 
   return (
     <a href={href} className={classes} target="_blank" rel="noopener noreferrer">
-      <span className="inline-flex items-center gap-2">
-        {siteConfig.applyButtonLabel}
-        <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
-      </span>
+      <span>{label}</span>
       {showCountdown ? (
-        <span className="text-xs font-medium opacity-90">{countdown.label}</span>
+        <span className="text-xs font-medium normal-case opacity-90">{countdown.label}</span>
       ) : null}
     </a>
   );
