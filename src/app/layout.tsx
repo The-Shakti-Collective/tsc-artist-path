@@ -17,7 +17,7 @@ const display = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: siteConfig.name,
+  title: 'Artist Path | TSC',
   description: siteConfig.description,
   metadataBase: new URL(siteConfig.url),
   openGraph: {

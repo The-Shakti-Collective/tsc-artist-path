@@ -1,4 +1,4 @@
-import { siteConfig } from '@/lib/config';
+﻿import { siteConfig } from '@/lib/config';
 import {
   artistBenefits,
   artistPathFaqs,
@@ -28,7 +28,6 @@ export {
   workPhases,
 };
 
-/** FAQ answers use live dates from site config */
 export const faqs = artistPathFaqs.map((faq) => {
   if (faq.question === 'When is the last date to apply?') {
     return {
