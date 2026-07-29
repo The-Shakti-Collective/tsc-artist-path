@@ -5,5 +5,12 @@
   },
   "framework": "nextjs",
   "installCommand": "npm install",
-  "buildCommand": "npm run build"
+  "buildCommand": "npm run build",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "destination": "https://www.theshakticollective.in/artist-path",
+      "permanent": true
+    }
+  ]
 }
